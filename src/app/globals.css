@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
+
+body {
+  font-family: 'Quicksand';
+  color: white;
+  background-image: radial-gradient();
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}

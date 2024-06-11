@@ -55,7 +55,7 @@ const page = () => {
               {data.map((object, index: number) => (
                 <div
                   key={"object-" + index}
-                  className={"flex flex-col w-full hover:font-bold hover:bg-[radial-gradient(#ffffff_0%,#ffffff00_75%)] cursor-pointer"}
+                  className={"flex flex-col w-full cursor-pointer " + ((index === currentObject) ? "font-bold bg-[radial-gradient(#ffffff_0%,#ffffff00_75%)]" : "hover:font-bold") }
                   style={{ opacity: 0 }}
                   onClick={(e) => setCurrentObject(index)}
                 >

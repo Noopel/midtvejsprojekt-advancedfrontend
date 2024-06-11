@@ -10,7 +10,6 @@ export default function Home() {
 
   useEffect(()=>{
     if(hRef && textRef1 && textRef2) {
-      console.log("HELLO")
       const ctx = gsap.context(()=>{
         gsap.fromTo(hRef.current, {x: -30, opacity: 0.25}, {x: 0, opacity: 1, duration: 1})
         gsap.fromTo(textRef1.current, {x: -10, opacity: 0}, {x: 0, opacity: 1, delay: 0.5, duration: 0.5})

@@ -5,14 +5,15 @@ import { FormEvent, useEffect, useRef, useState } from "react";
 const FloatingForm = () => {
   const container = useRef<null | HTMLElement>(null);
   const outerSection = useRef<null | HTMLElement>(null);
-  const formRef = useRef<null | HTMLFormElement>(null)
-  const [postStatus, setPostStatus] = useState<boolean | null>(null)
+  const formRef = useRef<null | HTMLFormElement>(null);
+  const [postStatus, setPostStatus] = useState<boolean | null>(null);
 
   const changeVisibility = (newState: boolean) => {
     const hasClass = container.current?.classList.contains("invisible");
 
     if (newState && hasClass) {
-      formRef.current?.reset()
+      formRef.current?.reset();
+      setPostStatus(null)
       container.current?.classList.remove("invisible");
     } else if (!newState && !hasClass) {
       container.current?.classList.add("invisible");
@@ -45,23 +46,24 @@ const FloatingForm = () => {
   }, []);
 
   async function handleSubmit(e: FormEvent) {
-    setPostStatus(null)
-    e.preventDefault()
+    setPostStatus(null);
+    e.preventDefault();
 
-    const form = e.target as HTMLFormElement
+    const form = e.target as HTMLFormElement;
 
     const body = {
-        name: form.fullName.value,
-        email: form.email.value,
-        comment: form.comment.value
-    }
+      name: form.fullName.value,
+      email: form.email.value,
+      comment: form.comment.value,
+    };
 
-    const response = await useSimpleFetch("/api/bookings", "POST", undefined, JSON.stringify(body))
-    
-    if(response.data) {
-        setPostStatus(true)
+    const response = await useSimpleFetch("/api/bookings", "POST", undefined, JSON.stringify(body));
+
+    if (response.data) {
+      setPostStatus(true);
+      formRef.current?.reset()
     } else {
-        setPostStatus(false)
+      setPostStatus(false);
     }
   }
 
@@ -100,16 +102,8 @@ const FloatingForm = () => {
               <button type="submit" className="px-4 py-0.5 text-sm bg-orange-400 hover:bg-orange-500 text-white rounded">
                 Submit
               </button>
-              {
-                postStatus === true && <p className="text-green-500">
-                    Booked successfully!
-                </p>
-             }
-             {
-                postStatus === false && <p className="text-red-500">
-                    Something went wrong!
-                </p>
-             }
+              {postStatus === true && <p className="text-green-500">Booked successfully!</p>}
+              {postStatus === false && <p className="text-red-500">Something went wrong!</p>}
             </div>
           </form>
         </div>

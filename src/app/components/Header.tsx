@@ -16,7 +16,7 @@ const Header = () => {
         <Navbar className="min-w-40" />
 
         <section className="min-w-40">
-          <button className="p-3 px-6 rounded-full bg-white text-black" id="floatingFormButton">
+          <button className="p-3 px-6 rounded-full bg-white text-black hover:bg-slate-200 active:bg-slate-400" id="floatingFormButton">
             Book a time
           </button>
         </section>

@@ -1,7 +1,6 @@
 "use client"
 import { useEffect, useRef } from "react";
 
-import BackgroundImage from "../components/BackgroundImage";
 import gsap from "gsap";
 
 const page = () => {
@@ -24,9 +23,7 @@ const page = () => {
   }, [])
 
   return (
-    <>
-      <BackgroundImage image="/images/background-contact.png" className="" />
-      <article ref={container} className="flex flex-col gap-6 ml-96 pt-16">
+    <article ref={container} className="flex flex-col gap-6 ml-96 pt-16">
         <section className="w-8/12">
           <h3 className="font-bold text-3xl">Iben Hildelof</h3>
           <p>
@@ -49,7 +46,6 @@ const page = () => {
           </p>
         </section>
       </article>
-    </>
   );
 };
 

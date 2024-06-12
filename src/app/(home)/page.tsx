@@ -1,6 +1,5 @@
 "use client"
 import { useEffect, useRef } from "react";
-import BackgroundImage from "./components/BackgroundImage";
 import gsap from "gsap";
 
 export default function Home() {
@@ -21,9 +20,7 @@ export default function Home() {
   })
 
   return (
-    <>
-      <BackgroundImage image="/images/background-about.png" className="-top-36" />
-      <article className="mt-40">
+    <article className="mt-40">
         <h1 className="font-black text-8xl" ref={hRef}>
           light in a <span className="text-orange-500">box</span>
         </h1>
@@ -37,6 +34,5 @@ export default function Home() {
           </p>
         </section>
       </article>
-    </>
   );
 }
